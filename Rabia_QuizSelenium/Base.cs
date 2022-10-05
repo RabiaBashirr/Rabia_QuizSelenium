@@ -3,6 +3,8 @@ using Microsoft.Win32;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
+using static System.Net.Mime.MediaTypeNames;
+using System.Security.Policy;
 
 namespace Rabia_QuizSelenium
 {
@@ -76,6 +78,9 @@ namespace Rabia_QuizSelenium
             GM.IsPageReady(driver);
 
             // Verify 'New User Signup!' is visible
+            RP.VerifySignUpLinkVisible();
+
+            //Verify Text of the sign up Link
             RP.VerifySignUpLink("Signup / Login");
 
             // Verify 'New User Signup!' is visible
@@ -87,6 +92,38 @@ namespace Rabia_QuizSelenium
             // Verify error 'Email Address already exist!' is visible
             RP.VerifyExistingUserErrorMessage("Email Address already exist!");
         }
+
+
+
+        /* ****************************************
+         *      TEST CASE - 02
+         * Verify Scroll Up without 'Arrow' button 
+         * and Scroll Down functionality
+        ***************************************** */
+
+        [TestMethod]
+        public void Scrolling()
+        {
+            // Launch browser
+            IWebDriver driver = GenericMethods.SeleniumBrowserInit("Chrome");
+
+            // Navigate to URL
+            GenericMethods.Navigation(url);
+
+            // Verify that home page is visible successfully
+            GM.IsPageReady(driver);
+
+            // Scroll down page to bottom
+
+
+            //5.Verify 'SUBSCRIPTION' is visible
+            //6.Scroll up page to top
+            //7.Verify that page is scrolled up and 'Full-Fledged practice website for Automation Engineers' text is visible on screen
+
+
+        }
+
+
     }
 }
 

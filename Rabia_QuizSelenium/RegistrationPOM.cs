@@ -177,10 +177,16 @@ namespace Rabia_QuizSelenium
             GM.ElementTextAssertion(ErrMsg, ExistingUserError);
         }
 
-        public void VerifySignUpLink(string ErrMsg)
+        public void VerifySignUpLinkVisible()
         {
-            //string s = GM.LocateElement(Sign).Text;
-            GM.ElementTextAssertion("Signup / Login", SignUpText);
+            GM.IsElementVisible(SignUpText);
+            //GM.ElementTextAssertion("Signup / Login", SignUpText);
+        }
+
+        public void VerifySignUpLink(string text)
+        {
+            //GM.IsElementVisible(SignUpText);
+            GM.ElementTextAssertion(text, SignUpText);
         }
 
     }

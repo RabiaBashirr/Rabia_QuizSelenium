@@ -89,8 +89,7 @@ namespace Rabia_QuizSelenium
 
         public void RemoveBanner(By locator)
         {
-            IWebElement ad = LocateElement(locator);
-            //driver.FindElement(By.Id("fixedban"));
+            IWebElement ad = LocateElement(locator);            
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].remove();", ad);
         }
 
@@ -99,6 +98,18 @@ namespace Rabia_QuizSelenium
             IWebElement e = LocateElement(locator);
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", e);
         }
+
+        public bool IsElementVisible(By locator)
+        {
+            if (driver.FindElement(locator)
+               .Displayed || driver.FindElement(locator).Enabled)
+            {
+                return true;
+            }
+            else
+            { return false; }
+        }
+
 
         public void ElementTextAssertion(string Expected, By  locator)
         {
