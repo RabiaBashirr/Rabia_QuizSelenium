@@ -37,13 +37,13 @@ namespace Rabia_QuizSelenium
             GM.ScrollToElement(Subscription);
         }
 
-
+        /*
         public void heading()
         {
             
         }
 
-
+        */
 
 
 
