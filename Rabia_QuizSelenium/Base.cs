@@ -125,7 +125,7 @@ namespace Rabia_QuizSelenium
                 SP.ScrollTop();
             }     
 
-            // Verify that page is scrolled up and 'Full-Fledged practice website for Automation Engineers' text is visible on screen
+            
 
 
         }
