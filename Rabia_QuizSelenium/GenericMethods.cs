@@ -107,7 +107,9 @@ namespace Rabia_QuizSelenium
                 return true;
             }
             else
-            { return false; }
+            {
+                return false; 
+            }
         }
 
 
@@ -138,9 +140,19 @@ namespace Rabia_QuizSelenium
         }
 
 
+        public void ScrolltoBottom()
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+           // js.ExecuteScript("window.scrollTo(0, document." + "Body" + ".scrollHeight);");
+            js.ExecuteScript("window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);");
+        }
 
 
-
+        public void ScrollToTop()
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("window.scrollTo(0, document." + "head" + ".scrollHeight);");
+        }
 
         public void CloseBrowser()
         {

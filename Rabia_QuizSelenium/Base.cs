@@ -14,6 +14,7 @@ namespace Rabia_QuizSelenium
         GenericMethods GM = new GenericMethods();
         RegistrationPOM RP = new RegistrationPOM();
         LoginUserPOM LP = new LoginUserPOM();
+        ScrollPOM SP = new ScrollPOM();
 
 //        IWebDriver driver = GenericMethods.SeleniumBrowserInit("Chrome");
 
@@ -42,12 +43,6 @@ namespace Rabia_QuizSelenium
             GM.IsPageReady(driver);
             RP.AccountInfo("Rabia-Quiz", "1", "August", "1991");
             RP.FillAddressInfo("Rabia", "Bashir", "Contour-Software", "Mughalpura", "Shalimar Link Road", "India", "Punjab", "Lahore", "54000", "03366656022");
-
-            //  SignupHeading.GetAttribute("New User Signup!");
-            //   driver.FindElement().SendKeys("");
-            //    Console.WriteLine("SignupHeading: " + s);eady(driver));
-            
-            //    Assert.AreEqual(true, GM.IsPageR
         }
 
         [TestMethod]
@@ -114,11 +109,23 @@ namespace Rabia_QuizSelenium
             GM.IsPageReady(driver);
 
             // Scroll down page to bottom
+            SP.ScrollDown();
 
+            // Verify 'SUBSCRIPTION' is visible
 
-            //5.Verify 'SUBSCRIPTION' is visible
-            //6.Scroll up page to top
-            //7.Verify that page is scrolled up and 'Full-Fledged practice website for Automation Engineers' text is visible on screen
+            try
+            {
+                bool e = SP.SubscriptionVisibility();                                
+            }
+            catch { 
+                Screenshot DemoForms = ((ITakesScreenshot)driver).GetScreenshot();
+                DemoForms.SaveAsFile("D:\\ContourSoftwareAutomation\\Subscription\\QuizScreenshot.png", ScreenshotImageFormat.Png);
+                
+            // Scroll up page to top
+                SP.ScrollTop();
+            }     
+
+            // Verify that page is scrolled up and 'Full-Fledged practice website for Automation Engineers' text is visible on screen
 
 
         }
