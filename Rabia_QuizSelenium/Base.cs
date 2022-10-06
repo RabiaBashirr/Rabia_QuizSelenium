@@ -11,6 +11,8 @@ namespace Rabia_QuizSelenium
     [TestClass]
     public class Base
     {
+        public static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         GenericMethods GM = new GenericMethods();
         RegistrationPOM RP = new RegistrationPOM();
         LoginUserPOM LP = new LoginUserPOM();
@@ -91,7 +93,7 @@ namespace Rabia_QuizSelenium
 
 
         /* ****************************************
-         *      TEST CASE - 02
+         *      TEST CASE - 03
          * Verify Scroll Up without 'Arrow' button 
          * and Scroll Down functionality
         ***************************************** */
@@ -100,33 +102,43 @@ namespace Rabia_QuizSelenium
         public void Scrolling()
         {
             // Launch browser
+            log.Info("Browser is launching: ");
             IWebDriver driver = GenericMethods.SeleniumBrowserInit("Chrome");
 
             // Navigate to URL
+            log.Info("Navigating to Website");
             GenericMethods.Navigation(url);
 
             // Verify that home page is visible successfully
+            log.Info("Page is ready to scroll");
             GM.IsPageReady(driver);
 
             // Scroll down page to bottom
+            log.Info("Scrolling downwards...");
             SP.ScrollDown();
 
             // Verify 'SUBSCRIPTION' is visible
 
             try
             {
+                log.Info("Checking subscription if it's visible on page?");
                 bool e = SP.SubscriptionVisibility();                                
             }
-            catch { 
+            catch {
+                log.Info("Subscription is not visible!");
                 Screenshot DemoForms = ((ITakesScreenshot)driver).GetScreenshot();
+                log.Info("Failure is catched in screenshot.");
                 DemoForms.SaveAsFile("D:\\ContourSoftwareAutomation\\Subscription\\QuizScreenshot.png", ScreenshotImageFormat.Png);
-                
-            // Scroll up page to top
+
+                // Scroll up page to top
+                log.Info("Scrolling upwards...");
                 SP.ScrollTop();
-            }     
+            }
 
-            
-
+            // Verify that page is scrolled up and 'Full-Fledged practice website for Automation Engineers' text is visible on screen
+            log.Info("Check if carousel is visible after scrolling?");
+            SP.VerifyHeading();
+            log.Info("Carousel is visible!");
 
         }
 

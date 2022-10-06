@@ -11,15 +11,15 @@ namespace Rabia_QuizSelenium
     public class ScrollPOM
     {
         By Subscription = By.XPath("//div[text()='Subscription']");
-        By heading = By.XPath("//div/span/[text()='Automation'");
+        By heading = By.XPath("//span[text()='Automation']");
+        By carousel = By.XPath("//div[@class='item active']//h2[contains(text(),'Full-Fledged practice website for Automation Engin')]");
 
 
         GenericMethods GM = new GenericMethods();
 
         public void ScrollDown()
         {
-            GM.ScrolltoBottom();
-            
+            GM.ScrolltoBottom();            
         }
 
         public bool SubscriptionVisibility()
@@ -37,13 +37,13 @@ namespace Rabia_QuizSelenium
             GM.ScrollToElement(Subscription);
         }
 
-        /*
-        public void heading()
+        
+        public void VerifyHeading()
         {
-            
+            GM.IsElementVisible(carousel);            
         }
 
-        */
+        
 
 
 
