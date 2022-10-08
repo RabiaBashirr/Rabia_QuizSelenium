@@ -143,6 +143,21 @@ namespace Rabia_QuizSelenium
         }
 
 
+        /* ***********************************
+        *             TEST CASE - 04
+        * Verify Subscription in home page
+       ************************************* */
+
+        [TestMethod]
+        public void Subscription()
+        { 
+        
+        
+        }
+
+
+
+    
     }
 }
 
